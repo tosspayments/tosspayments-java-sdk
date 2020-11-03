@@ -1,0 +1,4 @@
+rootProject.name = 'payments-sdk-java'
+include 'payments-sdk'
+include 'sample'
+

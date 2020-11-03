@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+group GROUP
+version VERSION_NAME
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(project(":payments-sdk"))
+}
