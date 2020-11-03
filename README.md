@@ -8,7 +8,7 @@ This repository contains Java SDK and samples for REST API.
 
 ## Installation
 #### Download Jar
-- latest version: [0.1](https://github.com/tosspayments/payments-sdk-java/raw/master/libs/payments-sdk-0.1-RC-all.jar)
+- latest version: [0.1](https://github.com/tosspayments/tosspayments-java-sdk/raw/master/libs/payments-sdk-0.1-RC-all.jar)
 
 
 ## Usage
