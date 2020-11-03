@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Title: tosspayments-sdk-java
-Implementation-Version: 0.1-RC
-Implementation-Vendor: Toss Payments Inc.
-Bundle-SymbolicName: tosspayments-sdk-java
-Export-Package: com.tosspayments.*
-
