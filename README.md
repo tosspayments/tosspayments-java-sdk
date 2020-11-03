@@ -3,7 +3,7 @@
 This repository contains Java SDK and samples for REST API.
 
 ## Prerequisites
-- Java JDK 6 or higher
+- Java JDK 7 or higher
 - An environment which supports TLS 1.2 (see the TLS-update site for more information)
 
 ## Installation
