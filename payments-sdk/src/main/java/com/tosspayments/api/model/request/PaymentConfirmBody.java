@@ -1,18 +1,18 @@
-package com.tosspayments.api.param;
+package com.tosspayments.api.model.request;
 
 import com.tosspayments.api.common.TossPaymentsRequestBody;
 
-public class PaymentsConfirmParams extends TossPaymentsRequestBody {
+public class PaymentConfirmBody extends TossPaymentsRequestBody {
     private String orderId;
     private Long amount;
 
-    private PaymentsConfirmParams(String orderId, Long amount) {
+    private PaymentConfirmBody(String orderId, Long amount) {
         this.orderId = orderId;
         this.amount = amount;
     }
 
-    public static PaymentsConfirmParams of(String orderId, Long amount) {
-        return new PaymentsConfirmParams(
+    public static PaymentConfirmBody of(String orderId, Long amount) {
+        return new PaymentConfirmBody(
                 orderId, amount
         );
     }

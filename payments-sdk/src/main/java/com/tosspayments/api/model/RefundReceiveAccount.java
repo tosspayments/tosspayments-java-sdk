@@ -1,4 +1,4 @@
-package com.tosspayments.api.param;
+package com.tosspayments.api.model;
 
 public class RefundReceiveAccount {
     private BankCode bank;

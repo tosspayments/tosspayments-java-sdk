@@ -1,4 +1,4 @@
-package com.tosspayments.api.domain.confirm;
+package com.tosspayments.api.model;
 
 public class VirtualAccountConfirm {
     private String accountNumber;

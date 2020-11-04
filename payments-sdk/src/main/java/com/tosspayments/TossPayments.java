@@ -7,18 +7,25 @@ import com.tosspayments.network.HttpBasicAuthProvider;
 import com.tosspayments.network.HttpClient;
 
 public class TossPayments {
+
+    private final PaymentsApi paymentsApi;
+
+    private TossPayments(PaymentsApi paymentsApi) {
+        this.paymentsApi = paymentsApi;
+    }
+
     public static class Builder {
         private final String secretKey;
         private Gson gson;
         private String paymentApiHost = "https://api.tosspayments.com";
         private int connectTimeout = 5000;
-        private int readTimeout = 5000;
+        private int readTimeout = 10000;
 
         private Builder(String secretKey) {
             this.secretKey = secretKey;
         }
 
-        public static Builder of(String secretKey) {
+        public static Builder ofSecretKey(String secretKey) {
             return new Builder(secretKey);
         }
 
@@ -53,12 +60,6 @@ public class TossPayments {
                     this.paymentApiHost, client
             ));
         }
-    }
-
-    private PaymentsApi paymentsApi;
-
-    private TossPayments(PaymentsApi paymentsApi) {
-        this.paymentsApi = paymentsApi;
     }
 
     public PaymentsApi getPaymentsApi() {

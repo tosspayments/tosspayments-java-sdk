@@ -1,4 +1,4 @@
-package com.tosspayments.api.domain.confirm;
+package com.tosspayments.api.model;
 
 public class MobilePhoneConfirm {
     private String carrier;

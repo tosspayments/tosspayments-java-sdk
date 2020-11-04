@@ -31,13 +31,6 @@ public class HttpClient {
         this.gson = gson;
     }
 
-    public HttpClient(HttpBasicAuthProvider keyProvider, Gson gson, int connectTimeout, int readTimeout) {
-        this.keyProvider = keyProvider;
-        this.connectTimeout = connectTimeout;
-        this.readTimeout = readTimeout;
-        this.gson = gson;
-    }
-
     public void setConnectTimeout(int connectTimeout) {
         this.connectTimeout = connectTimeout;
     }
@@ -87,8 +80,8 @@ public class HttpClient {
 
             if (success) {
                 if (request.isList()) {
-                    List<? extends TossPaymentsResponseBody> list
-                            = new ArrayList<>(Arrays.asList(gson.fromJson(responseBody, request.getListClassType())));
+                    TossPaymentsResponseBody[] body = gson.fromJson(responseBody, request.getListClassType());
+                    List<? extends TossPaymentsResponseBody> list = new ArrayList<>(Arrays.asList(body));
                     return new TossPaymentsResponse<>(list);
                 } else {
                     TossPaymentsResponseBody body = gson

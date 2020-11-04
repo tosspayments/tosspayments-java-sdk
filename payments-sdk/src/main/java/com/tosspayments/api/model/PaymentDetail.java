@@ -1,11 +1,6 @@
-package com.tosspayments.api.domain;
+package com.tosspayments.api.model;
 
 import com.tosspayments.api.common.TossPaymentsResponseBody;
-import com.tosspayments.api.domain.confirm.CardConfirm;
-import com.tosspayments.api.domain.confirm.CashReceiptConfirm;
-import com.tosspayments.api.domain.confirm.GiftCertificateConfirm;
-import com.tosspayments.api.domain.confirm.MobilePhoneConfirm;
-import com.tosspayments.api.domain.confirm.VirtualAccountConfirm;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.tosspayments.api.domain;
+package com.tosspayments.api.model;
 
 import com.tosspayments.api.common.TossPaymentsResponseBody;
 

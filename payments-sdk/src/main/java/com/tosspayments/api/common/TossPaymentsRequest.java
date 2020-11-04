@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 public class TossPaymentsRequest {
     // Request
     private final URL url;
-    private final Method method;
+    private final RequestMethod method;
     private final TossPaymentsRequestBody body;
 
     // Response
@@ -20,7 +20,7 @@ public class TossPaymentsRequest {
     private final Class<? extends TossPaymentsResponseBody[]> listClassType;
 
     private TossPaymentsRequest(URL url,
-                                Method method,
+                                RequestMethod method,
                                 TossPaymentsRequestBody body,
                                 boolean isList,
                                 Class<? extends TossPaymentsResponseBody> objectClassType,
@@ -104,9 +104,5 @@ public class TossPaymentsRequest {
 
     public Class<? extends TossPaymentsResponseBody[]> getListClassType() {
         return listClassType;
-    }
-
-    public enum Method {
-        GET, POST;
     }
 }
