@@ -15,10 +15,7 @@ public class PaymentDetail extends TossPaymentsResponseBody {
     private String status;
     private String requestedAt;
     private String approvedAt;
-    private Boolean useDiscount;
-    private Long discountAmount;
     private Boolean useEscrow;
-    private Boolean useCashReceipt;
     private String secret;
 
     private CardConfirm card;
@@ -27,6 +24,7 @@ public class PaymentDetail extends TossPaymentsResponseBody {
     private GiftCertificateConfirm giftCertificate;
     private CashReceiptConfirm cashReceipt;
     private List<PaymentCancelDetail> cancels;
+    private PaymentDiscount discount;
 
     public PaymentDetail() {
     }
@@ -111,36 +109,12 @@ public class PaymentDetail extends TossPaymentsResponseBody {
         this.approvedAt = approvedAt;
     }
 
-    public Boolean getUseDiscount() {
-        return useDiscount;
-    }
-
-    public void setUseDiscount(Boolean useDiscount) {
-        this.useDiscount = useDiscount;
-    }
-
-    public Long getDiscountAmount() {
-        return discountAmount;
-    }
-
-    public void setDiscountAmount(Long discountAmount) {
-        this.discountAmount = discountAmount;
-    }
-
     public Boolean getUseEscrow() {
         return useEscrow;
     }
 
     public void setUseEscrow(Boolean useEscrow) {
         this.useEscrow = useEscrow;
-    }
-
-    public Boolean getUseCashReceipt() {
-        return useCashReceipt;
-    }
-
-    public void setUseCashReceipt(Boolean useCashReceipt) {
-        this.useCashReceipt = useCashReceipt;
     }
 
     public String getSecret() {
@@ -197,5 +171,13 @@ public class PaymentDetail extends TossPaymentsResponseBody {
 
     public void setCancels(List<PaymentCancelDetail> cancels) {
         this.cancels = cancels;
+    }
+
+    public PaymentDiscount getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(PaymentDiscount discount) {
+        this.discount = discount;
     }
 }
