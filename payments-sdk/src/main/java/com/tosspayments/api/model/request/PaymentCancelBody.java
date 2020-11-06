@@ -12,17 +12,13 @@ public class PaymentCancelBody extends TossPaymentsRequestBody {
 
     private Long refundableAmount;
 
-    private PaymentCancelBody(String cancelReason, Long cancelAmount, Long taxAmount, Long taxFreeAmount, Long refundableAmount, RefundReceiveAccount refundReceiveAccount) {
+    public PaymentCancelBody(String cancelReason, Long cancelAmount, Long taxAmount, Long taxFreeAmount, Long refundableAmount, RefundReceiveAccount refundReceiveAccount) {
         this.cancelReason = cancelReason;
         this.cancelAmount = cancelAmount;
         this.taxAmount = taxAmount;
         this.taxFreeAmount = taxFreeAmount;
         this.refundableAmount = refundableAmount;
         this.refundReceiveAccount = refundReceiveAccount;
-    }
-
-    public static PaymentCancelBody of(String cancelReason) {
-        return new PaymentCancelBody(cancelReason, null, null, 0L, null, null);
     }
 
     public String getCancelReason() {

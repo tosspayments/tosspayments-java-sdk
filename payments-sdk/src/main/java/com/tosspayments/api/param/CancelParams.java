@@ -1,18 +1,15 @@
 package com.tosspayments.api.param;
 
+import com.tosspayments.api.model.BankCode;
 import com.tosspayments.api.model.RefundReceiveAccount;
 import com.tosspayments.api.model.request.PaymentCancelBody;
-import com.tosspayments.api.model.request.PaymentConfirmBody;
 
 public class CancelParams {
     private final String paymentKey;
-    private PaymentCancelBody body;
+    private final PaymentCancelBody body;
 
-    private CancelParams(String paymentKey) {
+    private CancelParams(String paymentKey, PaymentCancelBody body) {
         this.paymentKey = paymentKey;
-    }
-
-    private void setBody(PaymentCancelBody body) {
         this.body = body;
     }
 
@@ -24,34 +21,56 @@ public class CancelParams {
         return body;
     }
 
-    public static CancelParams of(String paymentKey, String cancelReason) {
-        CancelParams params = new CancelParams(paymentKey);
-        params.setBody(PaymentCancelBody.of(cancelReason));
-        return params;
-    }
+    public static class Builder {
+        private final String paymentKey;
+        private final String cancelReason;
 
-    public CancelParams setCancelAmount(Long cancelAmount) {
-        this.body.setCancelAmount(cancelAmount);
-        return this;
-    }
+        private Long cancelAmount;
+        private Long taxAmount;
+        private Long taxFreeAmount;
+        private Long refundableAmount;
+        private RefundReceiveAccount refundReceiveAccount;
 
-    public CancelParams setRefundableAmount(Long refundableAmount) {
-        this.body.setRefundableAmount(refundableAmount);
-        return this;
-    }
+        public Builder(String paymentKey, String cancelReason) {
+            this.paymentKey = paymentKey;
+            this.cancelReason = cancelReason;
+        }
 
-    public CancelParams setTaxAmount(Long taxAmount) {
-        this.body.setTaxAmount(taxAmount);
-        return this;
-    }
+        public Builder cancelAmount(Long cancelAmount) {
+            this.cancelAmount = cancelAmount;
+            return this;
+        }
 
-    public CancelParams setTaxFreeAmount(Long taxFreeAmount) {
-        this.body.setTaxFreeAmount(taxFreeAmount);
-        return this;
-    }
+        public Builder taxAmount(Long taxAmount) {
+            this.taxAmount = taxAmount;
+            return this;
+        }
 
-    public CancelParams setRefundReceiveAccount(RefundReceiveAccount refundReceiveAccount) {
-        this.body.setRefundReceiveAccount(refundReceiveAccount);
-        return this;
+        public Builder taxFreeAmount(Long taxFreeAmount) {
+            this.taxFreeAmount = taxFreeAmount;
+            return this;
+        }
+
+        public Builder refundableAmount(Long refundableAmount) {
+            this.refundableAmount = refundableAmount;
+            return this;
+        }
+
+        public Builder refundReceiveAccount(BankCode bank, String accountNumber, String holderName) {
+            this.refundReceiveAccount = new RefundReceiveAccount(bank, accountNumber, holderName);
+            return this;
+        }
+
+        public CancelParams build() {
+            PaymentCancelBody body = new PaymentCancelBody(
+                    cancelReason,
+                    cancelAmount,
+                    taxAmount,
+                    taxFreeAmount,
+                    refundableAmount,
+                    refundReceiveAccount);
+
+            return new CancelParams(paymentKey, body);
+        }
     }
 }

@@ -6,15 +6,9 @@ public class PaymentConfirmBody extends TossPaymentsRequestBody {
     private String orderId;
     private Long amount;
 
-    private PaymentConfirmBody(String orderId, Long amount) {
+    public PaymentConfirmBody(String orderId, Long amount) {
         this.orderId = orderId;
         this.amount = amount;
-    }
-
-    public static PaymentConfirmBody of(String orderId, Long amount) {
-        return new PaymentConfirmBody(
-                orderId, amount
-        );
     }
 
     public String getOrderId() {

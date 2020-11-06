@@ -4,13 +4,10 @@ import com.tosspayments.api.model.request.PaymentConfirmBody;
 
 public class ConfirmParams {
     private final String paymentKey;
-    private PaymentConfirmBody body;
+    private final PaymentConfirmBody body;
 
-    private ConfirmParams(String paymentKey) {
+    public ConfirmParams(String paymentKey, PaymentConfirmBody body) {
         this.paymentKey = paymentKey;
-    }
-
-    private void setBody(PaymentConfirmBody body) {
         this.body = body;
     }
 
@@ -22,9 +19,24 @@ public class ConfirmParams {
         return body;
     }
 
-    public static ConfirmParams of(String paymentKey, String orderId, Long amount) {
-        ConfirmParams params = new ConfirmParams(paymentKey);
-        params.setBody(PaymentConfirmBody.of(orderId, amount));
-        return params;
+    public static class Builder {
+        private final String paymentKey;
+        private final String orderId;
+        private final Long amount;
+
+        public Builder(String paymentKey, String orderId, Long amount) {
+            this.paymentKey = paymentKey;
+            this.orderId = orderId;
+            this.amount = amount;
+        }
+
+        public ConfirmParams build() {
+            return new ConfirmParams(
+                    paymentKey,
+                    new PaymentConfirmBody(
+                            orderId, amount
+                    )
+            );
+        }
     }
 }

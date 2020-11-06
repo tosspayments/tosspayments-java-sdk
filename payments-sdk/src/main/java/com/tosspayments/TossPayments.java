@@ -21,12 +21,8 @@ public class TossPayments {
         private int connectTimeout = 5000;
         private int readTimeout = 10000;
 
-        private Builder(String secretKey) {
+        public Builder(String secretKey) {
             this.secretKey = secretKey;
-        }
-
-        public static Builder ofSecretKey(String secretKey) {
-            return new Builder(secretKey);
         }
 
         public Builder withGson(Gson gson) {
@@ -62,7 +58,7 @@ public class TossPayments {
         }
     }
 
-    public PaymentsApi getPaymentsApi() {
+    public PaymentsApi payments() {
         return paymentsApi;
     }
 }

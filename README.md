@@ -8,7 +8,7 @@ This repository contains Java SDK and samples for REST API.
 
 ## Installation
 #### Download Jar
-- latest version: [0.1](https://github.com/tosspayments/tosspayments-java-sdk/raw/master/libs/payments-sdk-0.1-RC-all.jar)
+- latest version: [0.1](https://github.com/tosspayments/tosspayments-java-sdk/raw/master/libs/payments-sdk-0.1-all.jar)
 
 
 ## Usage
@@ -21,14 +21,15 @@ import com.tosspayments.TossPayments;
 ...
 
 // Initialize Sdk
-TossPayments sdk = TossPayments.Builder
-        .of("test_ak_ZORzdMaqN3wQd5k6ygr5AkYXQGwy")
-        .build();
+TossPayments sdk = new TossPayments.Builder("test_ak_ZORzdMaqN3wQd5k6ygr5AkYXQGwy")
+    .withReadTimeout(100000)
+    .build();
 ```
 
 - Request Api (Confirm Payment API)
 ```
 // Confirm Payment
-sdk.getPaymentsApi().confirm("6MKlA4XDvdYoEjb0gm23P1XaXWpB4VpGwBJn5eya1RPQkx9q",
-        PaymentsConfirmParams.of("tviva2020110217155290114", 1000L));
+PaymentDetail confirmedResult = sdk.payments().confirm(
+        new ConfirmParams.Builder(paymentKey, orderId, amount).build()
+);
 ```
